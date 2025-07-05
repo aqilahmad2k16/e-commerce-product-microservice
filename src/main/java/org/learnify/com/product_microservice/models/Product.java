@@ -27,6 +27,7 @@ public class Product {
     private boolean active;
     private String imageUrl;
     private int unitsInStock;
+    private String ratings;
     @CreationTimestamp
     private LocalDate dateCreated;
     @UpdateTimestamp

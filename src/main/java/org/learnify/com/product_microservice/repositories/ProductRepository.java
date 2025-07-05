@@ -1,9 +1,9 @@
 package org.learnify.com.product_microservice.repositories;
 
-import org.learnify.com.product_microservice.models.Category;
+import org.learnify.com.product_microservice.models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
 }
