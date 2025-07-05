@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "order")
+@Table(name = "purchase_order")
 @Getter
 @Setter
 public class Order {
@@ -20,7 +20,9 @@ public class Order {
     private String orderTrackingNumber;
     private Double totalPrice;
     private Integer totalQuantity;
+    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
+    @Enumerated(EnumType.STRING)
     private  PaymentStatus paymentStatus;
     private String razorPayOrderId;
     private String razorPayPaymentId;

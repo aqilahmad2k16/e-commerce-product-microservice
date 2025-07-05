@@ -1,9 +1,6 @@
 package org.learnify.com.product_microservice.models;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -17,6 +14,8 @@ import java.util.List;
 @Getter
 @Setter
 public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
     private String name;
     private String email;
