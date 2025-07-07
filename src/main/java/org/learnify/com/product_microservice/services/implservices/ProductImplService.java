@@ -27,9 +27,7 @@ public class ProductImplService implements ProductService {
                    .map(product -> {
                        ProductResponseDto productResponseDto = new ProductResponseDto();
                        BeanUtils.copyProperties(product, productResponseDto);
-                       Category category = new Category();
-                       BeanUtils.copyProperties(product.getCategory(), category);
-                       productResponseDto.setCategory(category);
+                       productResponseDto.setCategory(String.valueOf(product.getCategory()));
                        return productResponseDto;
                    }).toList();
             return ResponseEntity.ok(productResponseDtos);

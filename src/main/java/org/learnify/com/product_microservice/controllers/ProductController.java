@@ -19,7 +19,7 @@ public class ProductController {
     /*
     Fetch all products
      */
-    @GetMapping(value = "/", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<List<ProductResponseDto>> getAllProducts() {
         return productService.getAllProducts();
     }
