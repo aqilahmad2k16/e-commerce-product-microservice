@@ -1,6 +1,5 @@
 package org.learnify.com.product_microservice.serviceTest;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,11 +31,6 @@ public class ProductServiceTest {
     @BeforeAll
     public static void setUp() {
         product = new Product();
-    }
-
-    @AfterAll
-    public static void tearDown() {
-        product = null;
     }
 
     @Test
