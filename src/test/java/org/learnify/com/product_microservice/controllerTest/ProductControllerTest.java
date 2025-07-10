@@ -1,5 +1,8 @@
 package org.learnify.com.product_microservice.controllerTest;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.learnify.com.product_microservice.controllers.ProductController;
 import org.learnify.com.product_microservice.dtos.responseDtos.ProductResponseDto;
@@ -33,9 +36,20 @@ public class ProductControllerTest {
     @Autowired
     private ProductService productService; //inject mocked bean;
 
+    private static ProductResponseDto productDto = null;
+
+    @BeforeAll
+    public static void setProductResponseDto(){
+        productDto = new ProductResponseDto();
+    }
+
+    @AfterAll
+    public static void clearProductResponseDto(){
+        productDto = null;
+    }
+
     @Test
     public void shouldReturnListOfProducts() throws Exception {
-        ProductResponseDto productDto = new ProductResponseDto();
         productDto.setId(1L);
         productDto.setName("iPhone 14");
         productDto.setDescription("Latest Apple smartphone with A15 Bionic chip");
@@ -46,7 +60,7 @@ public class ProductControllerTest {
         productDto.setUnitsInStock(50);
         List<ProductResponseDto> mockProducts = List.of(productDto);
 
-        Mockito.when(productService.getAllProducts()).thenReturn(ResponseEntity.ok(mockProducts));
+        Mockito.when(productService.getAllProducts()).thenReturn(mockProducts);
 
         mvc.perform(get("/api/products")
                 .accept(MediaType.APPLICATION_JSON))

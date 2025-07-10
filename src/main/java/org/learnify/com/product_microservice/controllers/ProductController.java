@@ -21,7 +21,8 @@ public class ProductController {
      */
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<List<ProductResponseDto>> getAllProducts() {
-        return productService.getAllProducts();
+        List<ProductResponseDto> productDtos = productService.getAllProducts();
+        return ResponseEntity.ok(productDtos);
     }
 
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)

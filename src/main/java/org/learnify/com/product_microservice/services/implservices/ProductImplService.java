@@ -20,7 +20,7 @@ public class ProductImplService implements ProductService {
     private ProductRepository productRepository;
 
     @Override
-    public ResponseEntity<List<ProductResponseDto>> getAllProducts() {
+    public List<ProductResponseDto> getAllProducts() {
         try{
            List<Product> products = productRepository.findAll();
            List<ProductResponseDto> productResponseDtos = products.stream()
@@ -30,7 +30,7 @@ public class ProductImplService implements ProductService {
                        productResponseDto.setCategory(String.valueOf(product.getCategory()));
                        return productResponseDto;
                    }).toList();
-            return ResponseEntity.ok(productResponseDtos);
+            return productResponseDtos;
         } catch (Exception e) {
             throw new ProductFetchEexception("Failed to fetch products", e);
         }
