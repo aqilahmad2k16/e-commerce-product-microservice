@@ -12,10 +12,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.BeanUtils;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @ExtendWith(MockitoExtension.class)
 public class ProductServiceTest {
@@ -32,6 +35,8 @@ public class ProductServiceTest {
     public static void setUp() {
         product = new Product();
     }
+
+
 
     @Test
     public void shouldReturnListOfProducts() {
@@ -62,5 +67,20 @@ public class ProductServiceTest {
 
         //call service
         List<ProductResponseDto> result = productImplService.getAllProducts();
+        Product testProduct = new Product();
+        BeanUtils.copyProperties(result.get(0), testProduct);
+        testProduct.setCategory(new Category(result.get(0).getCategory()));
+
+        //Assertions
+        assertThat(result.size()).isEqualTo(1);
+        assertThat(testProduct.getCategory().getCategoryName().toString()).isEqualTo("Electronics");
+        assertThat(testProduct.getName()).isEqualTo("iPhone 15");
+        assertThat(testProduct.getDescription()).isEqualTo("Latest iPhone model");
+        assertThat(testProduct.getTitle()).isEqualTo("Apple iPhone");
+        assertThat(testProduct.getUnitPrice()).isEqualByComparingTo(BigDecimal.valueOf(1199.99));
+        assertThat(testProduct.isActive()).isEqualTo(true);
+        assertThat(testProduct.getImageUrl()).isEqualTo("https://example.com/iphone15.jpg");
+        assertThat(testProduct.getUnitsInStock()).isEqualTo(100);
+        assertThat(testProduct.getRatings()).isEqualTo("5");
     }
 }
