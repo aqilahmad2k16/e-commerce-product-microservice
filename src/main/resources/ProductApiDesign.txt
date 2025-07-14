@@ -1,0 +1,22 @@
+##################
+Product Apis:
+##################
+
+## GetAllProducts
+Requirement:
+    -get all products
+    -also get in with pagination sorted by rating
+    -requestDtos parameter
+        -name,
+        -description,
+        -title,
+        -unitPrice,
+        -active,
+        -unitInStock,
+        -imageUrl
+        -category
+    -response Dtos parm
+        -same as request
+        -validate required param as per discussion
+        -create end points => "/products"
+        -
