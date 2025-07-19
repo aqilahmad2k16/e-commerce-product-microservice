@@ -29,5 +29,10 @@ public class ProductController {
     public ResponseEntity<ProductResponseDto> storeProduct(@RequestBody ProductRequestDto productRequestDto) {
         return productService.createProduct(productRequestDto);
     }
+
+    /*
+    fetch products based on category
+     */
+
     
 }
