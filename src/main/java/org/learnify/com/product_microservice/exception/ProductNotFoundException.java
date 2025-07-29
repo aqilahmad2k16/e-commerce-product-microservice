@@ -1,0 +1,7 @@
+package org.learnify.com.product_microservice.exception;
+
+public class ProductNotFoundException extends RuntimeException {
+    public ProductNotFoundException(String message) {
+        super(message);
+    }
+}
